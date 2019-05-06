@@ -71,6 +71,12 @@ pipeline {
       slackSend (color: '#48f100', message: "SUCCESS ${env.BRANCH_NAME}@${env.BUILD_DISPLAY_NAME}")
     }
     failure {
+
+      // Get coverage and tests result
+      sh 'gcovr -x > coverage_build/coverage.xml'
+      cobertura coberturaReportFile: 'coverage_build/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failNoReports: false, failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 5, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII'
+      junit 'report/*.xml'
+
       slackSend (color: '#ff2900', message: "FAILED ${env.BRANCH_NAME}@${env.BUILD_DISPLAY_NAME}")
     }
   }
