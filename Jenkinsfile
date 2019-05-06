@@ -17,13 +17,12 @@ pipeline {
         }
       }
       steps {
-        sh 'echo salut'
-        // sh 'make fclean'
-        // sh 'make'
-        // sh 'make clean'
-        // sh 'make re'
-        // sh 'make fclean'
-        // sh 'make all'
+        sh 'make fclean'
+        sh 'make'
+        sh 'make clean'
+        sh 'make re'
+        sh 'make fclean'
+        sh 'make all'
       }
     }
 
