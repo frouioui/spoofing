@@ -47,7 +47,7 @@ debug:
 	$(CC) -g3 $(SRC) $(MAIN_SRC) -o $(BINARY_NAME) $(STATIC_LIB_FLAG) -I$(INCLUDE_DIRECTORY)
 
 tests_run: tests_compile
-	./$(TEST_BINARY_NAME) -j1
+	./$(TEST_BINARY_NAME) -j1 --xml=./report/core.xml
 
 tests_compile:
 	$(CC) $(SRC) $(TEST_SRC) -o $(TEST_BINARY_NAME) $(STATIC_LIB_FLAG) $(CRITERION) -I$(INCLUDE_DIRECTORY)
