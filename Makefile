@@ -38,7 +38,7 @@ LIBRARY_PATH					=	./lib
 LIBRARY_ERROR_INCLUDE	=	$(LIBRARY_PATH)/error/include
 
 # Source files
-SRC			=	$(SRC_DIRECTORY)/toto.c		\
+SRC			=	$(SRC_DIRECTORY)/argument/get_args.c		\
 
 # Main file
 MAIN_SRC	=	$(SRC_DIRECTORY)/main.c		\
