@@ -6,12 +6,18 @@
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "argument.h"
 #include "errorsys.h"
 
-int main(int argc, char **argv)
+int main(const int argc, const char **argv)
 {
-    (void)argc;
-    (void)argv;
+    argument_t args = {0};
+    error_t err = get_argument(&args, argc, argv);
+
+    if (err.msg) {
+        printf("Error: %s\n", err.msg);
+        return (84);
+    }
     return (0);
 }

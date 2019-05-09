@@ -9,6 +9,7 @@
 #define _ARGUMENT_H
 
 #include <stdbool.h>
+#include "errorsys.h"
 
 struct argument_s {
     char *src_ip;
@@ -20,5 +21,7 @@ struct argument_s {
 };
 
 typedef struct argument_s argument_t;
+
+error_t get_argument(argument_t* args, const int argc, const char **argv);
 
 #endif // _ARGUMENT_H
