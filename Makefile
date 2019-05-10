@@ -38,7 +38,13 @@ LIBRARY_PATH					=	./lib
 LIBRARY_ERROR_INCLUDE	=	$(LIBRARY_PATH)/error/include
 
 # Source files
-SRC			=	$(SRC_DIRECTORY)/argument/get_args.c		\
+SRC			=	$(SRC_DIRECTORY)/argument/get_args.c				\
+				$(SRC_DIRECTORY)/arp/arp_destroy.c					\
+				$(SRC_DIRECTORY)/arp/arp_fill.c						\
+				$(SRC_DIRECTORY)/arp/arp_init.c						\
+				$(SRC_DIRECTORY)/packet/packet_configure_arp.c		\
+				$(SRC_DIRECTORY)/packet/packet_configure_ethernet.c	\
+				$(SRC_DIRECTORY)/packet/packet_init.c
 
 # Main file
 MAIN_SRC	=	$(SRC_DIRECTORY)/main.c		\
