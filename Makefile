@@ -38,7 +38,14 @@ LIBRARY_PATH					=	./lib
 LIBRARY_ERROR_INCLUDE	=	$(LIBRARY_PATH)/error/include
 
 # Source files
-SRC			=	$(SRC_DIRECTORY)/argument/get_args.c		\
+SRC			=	$(SRC_DIRECTORY)/argument/get_args.c				\
+				$(SRC_DIRECTORY)/arp/arp_destroy.c					\
+				$(SRC_DIRECTORY)/arp/arp_fill.c						\
+				$(SRC_DIRECTORY)/arp/arp_init.c						\
+				$(SRC_DIRECTORY)/arp/arp_spoof.c					\
+				$(SRC_DIRECTORY)/packet/packet_configure_arp.c		\
+				$(SRC_DIRECTORY)/packet/packet_configure_ethernet.c	\
+				$(SRC_DIRECTORY)/packet/packet_init.c
 
 # Main file
 MAIN_SRC	=	$(SRC_DIRECTORY)/main.c		\
@@ -50,7 +57,7 @@ TEST_SRC	=	\
 all: $(BINARY_NAME)
 
 $(BINARY_NAME): compile_library $(OBJS) $(MAIN_OBJ)
-	$(CC) $(OBJS) $(MAIN_OBJ) -o $(BINARY_NAME) $(STATIC_LIB_FLAG)
+	$(CC) $(OBJS) $(MAIN_OBJ) -o $(BINARY_NAME) $(STATIC_LIB_FLAG) -g3
 
 debug: compile_library_debug
 	$(CC) -g3 $(SRC) $(MAIN_SRC) -o $(BINARY_NAME) $(STATIC_LIB_FLAG) -I$(INCLUDE_DIRECTORY) -I$(LIBRARY_ERROR_INCLUDE)
