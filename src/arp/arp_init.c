@@ -5,7 +5,9 @@
 ** Initialize the structure arp
 */
 
+#include <linux/if_packet.h>
 #include <stdlib.h>
+#include <string.h>
 #include "arp.h"
 
 arp_t *arp_init(void)
@@ -15,7 +17,8 @@ arp_t *arp_init(void)
     if (arp == NULL)
         return (NULL);
     arp->interface_id = -1;
-    arp->mac_address = NULL;
+    arp->src_mac_address = NULL;
     arp->fd = -1;
+    arp->address = calloc(1, sizeof(struct sockaddr_ll));
     return (arp);
 }

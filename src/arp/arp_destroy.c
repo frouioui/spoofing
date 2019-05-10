@@ -15,6 +15,6 @@ bool arp_destroy(arp_t *arp)
     if (arp == NULL)
         return (false);
     close(arp->fd);
-    free(arp->mac_address);
+    free(arp->src_mac_address);
     return (true);
 }

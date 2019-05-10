@@ -24,5 +24,6 @@ int main(const int argc, const char **argv)
     arp = arp_init();
     if (arp_fill(arp, args.interface, args.src_ip, args.dest_ip) == false)
         return (84);
+    arp_spoof(arp);
     return (0);
 }

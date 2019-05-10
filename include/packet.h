@@ -10,9 +10,12 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include "arp.h"
 
 #define MAC_ADDRESS_LENGTH 6
 #define IP_ADDRESS_LENGTH 4
+
+#define BROADCAST_ADDR (uint8_t[6]){0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
 
 /**
 * Arp header
@@ -49,7 +52,9 @@ typedef union packet_s {
     packet_content_t content;
 } packet_t;
 
-bool packet_configure_ethernet(packet_t *packet, char *mac_src, char *mac_dest);
-bool packet_configure_arp(packet_t *packet);
-
+packet_t *packet_init(void);
+bool packet_configure_ethernet(packet_t *packet, uint8_t *mac_src, \
+                                uint8_t *mac_dest);
+bool packet_configure_arp(packet_t *packet, int opcode, uint8_t *dest_mac, \
+                            arp_t *arp);
 #endif /* !PACKET_H_ */
