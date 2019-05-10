@@ -43,20 +43,35 @@ static bool arp_fill_interface_and_mac(arp_t *arp, char *interface)
         printf("Error: unable to retrieve the mac address.\n");
         return (false);
     }
-    arp->mac_address = calloc(7, sizeof(char));
+    arp->src_mac_address = calloc(7, sizeof(uint8_t));
     for (int i = 0; i < 6; i++)
-        arp->mac_address[i] = ifr.ifr_hwaddr.sa_data[i];
-    arp->mac_address[6] = '\0';
+        arp->src_mac_address[i] = ifr.ifr_hwaddr.sa_data[i];
+    arp->src_mac_address[6] = '\0';
     return (true);
 }
 
-bool arp_fill(arp_t *arp, char *interface)
+static bool arp_fill_target_and_sender(arp_t *arp, char *target_ip, \
+                                        char *sender_ip)
+{
+    if (arp == NULL || target_ip == NULL || sender_ip == NULL)
+        return (false);
+    if (inet_pton(AF_INET, target_ip, arp->sender_ip_address) != 1)
+        return (false);
+    if (inet_pton(AF_INET, sender_ip, arp->target_ip_address) != 1)
+        return (false);
+    return (true);
+}
+
+static bool arp_fill(arp_t *arp, char *interface, char *target_ip, \
+                    char *sender_ip)
 {
     if (arp == NULL || interface == NULL)
         return (false);
     if (arp_fill_socket(arp) == false)
         return (false);
     if (arp_fill_interface_and_mac(arp, interface) == false)
+        return (false);
+    if (arp_fill_target_and_sender(arp, target_ip, sender_ip) == false)
         return (false);
     return (true);
 }
