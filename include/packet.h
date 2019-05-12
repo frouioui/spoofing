@@ -15,12 +15,8 @@
 #define MAC_ADDRESS_LENGTH 6
 #define IP_ADDRESS_LENGTH 4
 
-#define BROADCAST_ADDR (uint8_t[6]){0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}
-
 /**
 * Arp header
-* Hardware type -> Network link protocol type (Ethernet is 1)
-* Protocol type -> 
 */
 typedef struct arp_header_s {
     uint16_t hardware_type;
@@ -34,6 +30,9 @@ typedef struct arp_header_s {
     uint8_t target_ip[IP_ADDRESS_LENGTH];
 } arp_header_t;
 
+/**
+* Ethernet header
+*/
 typedef struct ethernet_header_s
 {
     uint8_t dest_mac[MAC_ADDRESS_LENGTH];
@@ -57,4 +56,8 @@ bool packet_configure_ethernet(packet_t *packet, uint8_t *mac_src, \
                                 uint8_t *mac_dest);
 bool packet_configure_arp(packet_t *packet, int opcode, uint8_t *dest_mac, \
                             arp_t *arp);
+bool packet_send(int fd, packet_t *packet, struct sockaddr *address, \
+                socklen_t addr_len);
+packet_t *packet_receive(int fd, char *src_packet);
+
 #endif /* !PACKET_H_ */

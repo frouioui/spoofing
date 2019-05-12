@@ -20,5 +20,6 @@ arp_t *arp_init(void)
     arp->src_mac_address = NULL;
     arp->fd = -1;
     arp->address = calloc(1, sizeof(struct sockaddr_ll));
+    arp->args = NULL;
     return (arp);
 }

@@ -45,7 +45,10 @@ SRC			=	$(SRC_DIRECTORY)/argument/get_args.c				\
 				$(SRC_DIRECTORY)/arp/arp_spoof.c					\
 				$(SRC_DIRECTORY)/packet/packet_configure_arp.c		\
 				$(SRC_DIRECTORY)/packet/packet_configure_ethernet.c	\
-				$(SRC_DIRECTORY)/packet/packet_init.c
+				$(SRC_DIRECTORY)/packet/packet_init.c				\
+				$(SRC_DIRECTORY)/packet/packet_send.c				\
+				$(SRC_DIRECTORY)/packet/packet_receive.c			\
+				$(SRC_DIRECTORY)/utils/display.c
 
 # Main file
 MAIN_SRC	=	$(SRC_DIRECTORY)/main.c		\
