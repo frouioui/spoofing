@@ -70,16 +70,17 @@ static bool arp_fill_target_and_sender(arp_t *arp, char *target_ip, \
     return (true);
 }
 
-bool arp_fill(arp_t *arp, char *interface, char *target_ip, \
-                char *sender_ip)
+bool arp_fill(arp_t *arp, argument_t *args)
 {
-    if (arp == NULL || interface == NULL)
+    if (arp == NULL || args->interface == NULL || \
+        args->src_ip == NULL || args->dest_ip == NULL)
         return (false);
     if (arp_fill_socket(arp) == false)
         return (false);
-    if (arp_fill_interface_and_mac(arp, interface) == false)
+    if (arp_fill_interface_and_mac(arp, args->interface) == false)
         return (false);
-    if (arp_fill_target_and_sender(arp, target_ip, sender_ip) == false)
+    if (arp_fill_target_and_sender(arp, args->src_ip, args->dest_ip) == false)
         return (false);
+    arp->args = args;
     return (true);
 }
