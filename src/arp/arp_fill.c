@@ -16,11 +16,14 @@
 #include <arpa/inet.h>
 #include "arp.h"
 
-static bool arp_fill_socket(arp_t *arp)
+static bool arp_fill_socket(arp_t *arp, bool isSudo)
 {
     if (arp == NULL)
         return (false);
-    arp->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
+    if (isSudo == false)
+        arp->fd = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
+    else
+        arp->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
     if (arp->fd == -1) {
         printf("Error: failed to initialize the socket !\n");
         return (false);
@@ -70,12 +73,14 @@ static bool arp_fill_target_and_sender(arp_t *arp, char *target_ip, \
     return (true);
 }
 
-bool arp_fill(arp_t *arp, argument_t *args)
+bool arp_fill(arp_t *arp, argument_t *args, bool isSudo)
 {
+    if (isSudo)
+        printf("ole\n");
     if (arp == NULL || args->interface == NULL || \
         args->src_ip == NULL || args->dest_ip == NULL)
         return (false);
-    if (arp_fill_socket(arp) == false)
+    if (arp_fill_socket(arp, isSudo) == false)
         return (false);
     if (arp_fill_interface_and_mac(arp, args->interface) == false)
         return (false);

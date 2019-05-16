@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <linux/if_packet.h>
-#include <net/ethernet.h> /* the L2 protocols */
+#include <net/ethernet.h>
 #include <net/if_arp.h>
 #include <arpa/inet.h>
 #include <string.h>
