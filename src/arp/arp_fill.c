@@ -14,6 +14,7 @@
 #include <linux/if_packet.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <string.h>
 #include "arp.h"
 
 static bool arp_fill_socket(arp_t *arp, bool isSudo)
@@ -75,8 +76,6 @@ static bool arp_fill_target_and_sender(arp_t *arp, char *target_ip, \
 
 bool arp_fill(arp_t *arp, argument_t *args, bool isSudo)
 {
-    if (isSudo)
-        printf("ole\n");
     if (arp == NULL || args->interface == NULL || \
         args->src_ip == NULL || args->dest_ip == NULL)
         return (false);

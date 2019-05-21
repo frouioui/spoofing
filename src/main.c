@@ -22,7 +22,8 @@ int main(const int argc, const char **argv)
         return (84);
     }
     arp = arp_init();
-    if (arp_fill(arp, &args, !(args.print_broadcast || args.print_spoof)) == false)
+    if (arp_fill(arp, &args, \
+                !(args.print_broadcast || args.print_spoof)) == false)
         return (84);
     if (args.print_broadcast == false && args.print_spoof == false)
         arp_spoof(arp);

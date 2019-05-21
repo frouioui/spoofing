@@ -62,9 +62,13 @@ bool arp_spoof(arp_t *arp)
     if (packet_received == NULL)
         return (false);
     printf("Found victim's MAC address: '");
+    memset(arp->src_mac_address, 0, IP_ADDRESS_LENGTH);
+    memcpy(arp->src_mac_address, packet_received->content.arp.sender_mac, \
+            IP_ADDRESS_LENGTH);
     print_mac_address(packet_received->content.arp.sender_mac);
     printf("'\n");
-    if (send_spoofed_packets(arp, packet_received->content.arp.sender_mac) == false)
+    if (send_spoofed_packets(arp, \
+        packet_received->content.arp.sender_mac) == false)
         return (false);
     return (true);
 }

@@ -8,7 +8,7 @@
 #if !defined(_ERROR_SYS_HPP)
 #define _ERROR_SYS_HPP
 
-typedef char* error_str_t;
+typedef char * error_str_t;
 
 enum type_error_e {
     DEFAULT,
