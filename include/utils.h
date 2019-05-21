@@ -12,5 +12,6 @@
 
 void print_mac_address(uint8_t *mac);
 void print_ip_address(uint8_t *ip);
+char **my_str_split(char *str, char *delim);
 
 #endif /* !UTILS_H_ */

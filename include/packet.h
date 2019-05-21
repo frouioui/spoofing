@@ -59,5 +59,6 @@ bool packet_configure_arp(packet_t *packet, int opcode, uint8_t *dest_mac, \
 bool packet_send(int fd, packet_t *packet, struct sockaddr *address, \
                 socklen_t addr_len);
 packet_t *packet_receive(int fd, char *src_packet);
+bool packet_print(packet_t *packet);
 
 #endif /* !PACKET_H_ */
