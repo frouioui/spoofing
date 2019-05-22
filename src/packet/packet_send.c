@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** packet_send
+** File description:
+** Send an arp packet
 */
 
 #include <stdlib.h>

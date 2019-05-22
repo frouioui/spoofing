@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** arp_spoof
+** File description:
+** Spoof the target with spoofed packets
 */
 
 #include <stdbool.h>
@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <linux/if_packet.h>
-#include <net/ethernet.h> /* the L2 protocols */
+#include <net/ethernet.h>
 #include <net/if_arp.h>
 #include <arpa/inet.h>
 #include <string.h>
@@ -62,9 +62,13 @@ bool arp_spoof(arp_t *arp)
     if (packet_received == NULL)
         return (false);
     printf("Found victim's MAC address: '");
+    memset(arp->src_mac_address, 0, IP_ADDRESS_LENGTH);
+    memcpy(arp->src_mac_address, packet_received->content.arp.sender_mac, \
+            IP_ADDRESS_LENGTH);
     print_mac_address(packet_received->content.arp.sender_mac);
     printf("'\n");
-    if (send_spoofed_packets(arp, packet_received->content.arp.sender_mac) == false)
+    if (send_spoofed_packets(arp, \
+        packet_received->content.arp.sender_mac) == false)
         return (false);
     return (true);
 }

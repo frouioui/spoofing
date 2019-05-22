@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** packet_configure_arp
+** File description:
+** Configure the arp header
 */
 
 #include <stdlib.h>
