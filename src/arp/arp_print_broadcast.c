@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** arp_print_broadcast
+** File description:
+** Print the packet before sending it to broadcast
 */
 
 #include <sys/socket.h>

@@ -21,8 +21,5 @@ arp_t *arp_init(void)
     arp->fd = -1;
     arp->address = calloc(1, sizeof(struct sockaddr_ll));
     arp->args = NULL;
-    arp->sender_ip_address_str = NULL;
-    arp->src_mac_address_str = NULL;
-    arp->target_ip_address_str = NULL;
     return (arp);
 }

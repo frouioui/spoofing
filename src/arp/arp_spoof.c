@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** arp_spoof
+** File description:
+** Spoof the target with spoofed packets
 */
 
 #include <stdbool.h>

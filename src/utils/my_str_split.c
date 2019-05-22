@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** my_str_split
+** File description:
+** Split a string by a delimiter
 */
 
 #include <stdbool.h>

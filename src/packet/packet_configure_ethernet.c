@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** packet_configure_ethernet
+** File description:
+** Configure the ethernet header
 */
 
 #include <stdlib.h>
