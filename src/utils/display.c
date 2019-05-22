@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
+** diplay functions
 ** File description:
-** display
+** Functions to print the mac/ip address
 */
 
 #include <stdio.h>

@@ -17,11 +17,11 @@
 #include <string.h>
 #include "arp.h"
 
-static bool arp_fill_socket(arp_t *arp, bool isSudo)
+static bool arp_fill_socket(arp_t *arp, bool is_sudo)
 {
     if (arp == NULL)
         return (false);
-    if (isSudo == false)
+    if (is_sudo == false)
         arp->fd = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
     else
         arp->fd = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
@@ -74,12 +74,12 @@ static bool arp_fill_target_and_sender(arp_t *arp, char *target_ip, \
     return (true);
 }
 
-bool arp_fill(arp_t *arp, argument_t *args, bool isSudo)
+bool arp_fill(arp_t *arp, argument_t *args, bool is_sudo)
 {
     if (arp == NULL || args->interface == NULL || \
         args->src_ip == NULL || args->dest_ip == NULL)
         return (false);
-    if (arp_fill_socket(arp, isSudo) == false)
+    if (arp_fill_socket(arp, is_sudo) == false)
         return (false);
     if (arp_fill_interface_and_mac(arp, args->interface) == false)
         return (false);

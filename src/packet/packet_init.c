@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** packet_init
+** File description:
+** Init the packet
 */
 
 #include <stdlib.h>

@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** arp_destroy
+** File description:
+** Destroy the arp structure
 */
 
 #include <stdbool.h>

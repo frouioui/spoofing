@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** spoofing
-** File description:
 ** arp_print_spoof
+** File description:
+** Print the packet before sending it to the target
 */
 
 #include <string.h>
