@@ -40,7 +40,7 @@ bool send_spoofed_packets(arp_t *arp, uint8_t *sender_mac)
     if (spoofed_packet == NULL)
         return (false);
     packet_configure_ethernet(spoofed_packet, arp->src_mac_address, sender_mac);
-    packet_configure_arp(spoofed_packet, 1, sender_mac, arp);
+    packet_configure_arp(spoofed_packet, 2, sender_mac, arp);
     while (1) {
         packet_send(arp->fd, spoofed_packet, (struct sockaddr *)arp->address, \
                     sizeof(*arp->address));
