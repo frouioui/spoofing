@@ -21,7 +21,7 @@ static bool fill_mac_address_spoofed(uint8_t *mac_spoofed, arp_t *arp)
         return (false);
     while (mac_split[size])
         size++;
-    if (size > MAC_ADDRESS_LENGTH)
+    if (size != MAC_ADDRESS_LENGTH)
         return (false);
     mac_spoofed[0] = strtol(mac_split[0], NULL, 16);
     mac_spoofed[1] = strtol(mac_split[1], NULL, 16);
