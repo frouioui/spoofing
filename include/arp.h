@@ -25,7 +25,7 @@ typedef struct arp_s
 } arp_t;
 
 arp_t *arp_init(void);
-bool arp_fill(arp_t *arp, argument_t *args, bool isSudo);
+bool arp_fill(arp_t *arp, argument_t *args, bool is_sudo);
 bool arp_spoof(arp_t *arp);
 bool arp_destroy(arp_t *arp);
 bool arp_print_broadcast(arp_t *arp);
